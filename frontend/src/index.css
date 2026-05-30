@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   BI DASHBOARD — DESIGN SYSTEM
+   Premium glassmorphism enterprise dashboard
+   ============================================ */
+
+@layer base {
+  :root {
+    --color-brand: 99 102 241;
+    --color-cyan: 6 182 212;
+    --color-success: 16 185 129;
+    --color-warning: 245 158 11;
+    --color-danger: 239 68 68;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-surface-50 text-surface-900 dark:bg-surface-950 dark:text-surface-100;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 116, 139, 0.3) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.3);
+    border-radius: 3px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.5);
+  }
+}
+
+@layer components {
+  /* ---- Glassmorphism Cards ---- */
+  .glass-card {
+    @apply rounded-2xl border transition-all duration-300;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+
+  .dark .glass-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .glass-card-hover:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ---- Sidebar ---- */
+  .glass-sidebar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .glass-sidebar {
+    background: rgba(15, 23, 42, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* ---- Header ---- */
+  .glass-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .glass-header {
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* ---- KPI Card ---- */
+  .kpi-card {
+    @apply glass-card glass-card-hover p-5 cursor-default;
+  }
+
+  .kpi-icon {
+    @apply w-11 h-11 rounded-xl flex items-center justify-center;
+  }
+
+  .kpi-value {
+    @apply text-2xl font-bold tracking-tight;
+  }
+
+  .kpi-label {
+    @apply text-xs font-medium uppercase tracking-wider;
+    @apply text-surface-500 dark:text-surface-400;
+  }
+
+  .kpi-trend-up {
+    @apply text-emerald-600 dark:text-emerald-400 text-xs font-semibold flex items-center gap-0.5;
+  }
+
+  .kpi-trend-down {
+    @apply text-rose-600 dark:text-rose-400 text-xs font-semibold flex items-center gap-0.5;
+  }
+
+  /* ---- Chart Card ---- */
+  .chart-card {
+    @apply glass-card p-5;
+  }
+
+  .chart-title {
+    @apply text-sm font-semibold text-surface-800 dark:text-surface-200;
+  }
+
+  .chart-subtitle {
+    @apply text-xs text-surface-500 dark:text-surface-400;
+  }
+
+  /* ---- Data Table ---- */
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table thead th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider;
+    @apply text-surface-500 dark:text-surface-400;
+    @apply border-b border-surface-200 dark:border-surface-700;
+  }
+
+  .data-table tbody td {
+    @apply px-4 py-3;
+    @apply border-b border-surface-100 dark:border-surface-800;
+  }
+
+  .data-table tbody tr {
+    @apply transition-colors duration-150;
+  }
+
+  .data-table tbody tr:hover {
+    @apply bg-surface-50 dark:bg-surface-800/50;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply px-4 py-2 rounded-xl font-medium text-sm text-white transition-all duration-200;
+    @apply bg-brand-500 hover:bg-brand-600 active:bg-brand-700;
+    @apply shadow-lg shadow-brand-500/25 hover:shadow-xl hover:shadow-brand-500/30;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:ring-offset-2;
+    @apply dark:focus:ring-offset-surface-900;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-xl font-medium text-sm transition-all duration-200;
+    @apply bg-surface-100 text-surface-700 hover:bg-surface-200;
+    @apply dark:bg-surface-800 dark:text-surface-300 dark:hover:bg-surface-700;
+    @apply focus:outline-none focus:ring-2 focus:ring-surface-400/50;
+  }
+
+  .btn-ghost {
+    @apply px-3 py-2 rounded-lg font-medium text-sm transition-all duration-200;
+    @apply text-surface-600 hover:bg-surface-100 hover:text-surface-900;
+    @apply dark:text-surface-400 dark:hover:bg-surface-800 dark:hover:text-surface-100;
+  }
+
+  /* ---- Input ---- */
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl text-sm transition-all duration-200;
+    @apply bg-surface-100 border border-surface-200;
+    @apply dark:bg-surface-800 dark:border-surface-700 dark:text-surface-100;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500;
+    @apply placeholder:text-surface-400 dark:placeholder:text-surface-500;
+  }
+
+  /* ---- Badge ---- */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400;
+  }
+
+  .badge-danger {
+    @apply badge bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400;
+  }
+
+  .badge-info {
+    @apply badge bg-brand-100 text-brand-800 dark:bg-brand-900/30 dark:text-brand-400;
+  }
+
+  /* ---- Nav Item ---- */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200;
+    @apply text-surface-600 hover:text-surface-900 hover:bg-surface-100;
+    @apply dark:text-surface-400 dark:hover:text-surface-100 dark:hover:bg-surface-800;
+  }
+
+  .nav-item-active {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium;
+    @apply text-brand-700 bg-brand-50;
+    @apply dark:text-brand-400 dark:bg-brand-500/10;
+    border-left: 3px solid;
+    @apply border-brand-500;
+  }
+
+  /* ---- Gradient Backgrounds ---- */
+  .gradient-mesh {
+    background:
+      radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.08) 0, transparent 50%),
+      radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.06) 0, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.04) 0, transparent 50%);
+  }
+
+  .dark .gradient-mesh {
+    background:
+      radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
+      radial-gradient(at 80% 20%, rgba(6, 182, 212, 0.1) 0, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0, transparent 50%);
+  }
+
+  /* ---- Login Background ---- */
+  .login-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .login-bg::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .login-bg::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.05); }
+    66% { transform: translate(-20px, 20px) scale(0.95); }
+  }
+
+  /* ---- Skeleton Loader ---- */
+  .skeleton {
+    @apply rounded-lg animate-pulse;
+    @apply bg-surface-200 dark:bg-surface-700;
+  }
+
+  /* ---- Gradient Text ---- */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6366f1, #06b6d4);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
